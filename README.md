@@ -7,6 +7,11 @@ cd menv/Scripts
 
 activate
 ```
+- Cài thư viện nếu lỗi
+```buildoutcfg
+python -m pip install django django-seed
+
+```
 - Tạo và seed data cho database
 ```buildoutcfg
 python manage.py makemigrations
