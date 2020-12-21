@@ -1,4 +1,4 @@
-from app.models import Role, User, CartDetail, Cart, Shoe, Size, Promotion, Stock
+from app.models import Role
 from django_seed import Seed
 
 seeder = Seed.seeder()

@@ -1,14 +1,14 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Role
-from .models import User
-from .models import Size
-from .models import Shoe
-from .models import Stock
-from .models import Promotion
-from .models import Cart
-from .models import CartDetail
+from app.models import Role
+from app.models import User
+from app.models import Size
+from app.models import Shoe
+from app.models import Stock
+from app.models import Promotion
+from app.models import Cart
+from app.models import CartDetail
 
 admin.site.register(Role)
 admin.site.register(User)
