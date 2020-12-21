@@ -4,6 +4,6 @@ import datetime
 
 def current_datetime(request):
 
-    return render(request, 'app/index.html')
+    return render(request, 'app/tables.html')
 
 # Create your views here.

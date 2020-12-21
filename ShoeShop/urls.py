@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import homes
+from app.views import homes, admins
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', homes.current_datetime)
+    path('', homes.current_datetime),
+    path('dashboard/', admins.current_datetime)
 ]
