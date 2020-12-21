@@ -1,0 +1,385 @@
+[
+  {
+    "model": "app.Role",
+    "pk": 1,
+    "fields": {
+      "role": "user"
+    }
+  },
+  {
+    "model": "app.Role",
+    "pk": 2,
+    "fields": {
+      "role": "admin"
+    }
+  },
+  {
+    "model": "app.User",
+    "pk": 1,
+    "fields": {
+      "username": "user",
+      "role": 1,
+      "password": "123",
+      "address": "Phu my phu vang hue"
+    }
+  },
+  {
+    "model": "app.User",
+    "pk": 2,
+    "fields": {
+      "username": "admin",
+      "role": 2,
+      "password": "123",
+      "address": "Phu my phu vang hue"
+    }
+  },
+  {
+    "model": "app.Size",
+    "pk": 1,
+    "fields": {
+      "size": 36
+    }
+  },
+  {
+    "model": "app.Size",
+    "pk": 2,
+    "fields": {
+      "size": 37
+    }
+  },
+  {
+    "model": "app.Size",
+    "pk": 3,
+    "fields": {
+      "size": 38
+    }
+  },
+  {
+    "model": "app.Size",
+    "pk": 4,
+    "fields": {
+      "size": 39
+    }
+  },
+  {
+    "model": "app.Size",
+    "pk": 5,
+    "fields": {
+      "size": 40
+    }
+  },
+  {
+    "model": "app.Size",
+    "pk": 6,
+    "fields": {
+      "size": 41
+    }
+  },
+  {
+    "model": "app.Size",
+    "pk": 7,
+    "fields": {
+      "size": 42
+    }
+  },
+  {
+    "model": "app.Size",
+    "pk": 8,
+    "fields": {
+      "size": 43
+    }
+  },
+  {
+    "model": "app.Size",
+    "pk": 9,
+    "fields": {
+      "size": 44
+    }
+  },
+  {
+    "model": "app.Size",
+    "pk": 10,
+    "fields": {
+      "size": 45
+    }
+  },
+  {
+    "model": "app.Shoe",
+    "pk": 1,
+    "fields": {
+      "name": "Nike Den",
+      "manufactor": "Nike",
+      "price": 2400000
+    }
+  },
+   {
+    "model": "app.Shoe",
+    "pk": 2,
+    "fields": {
+      "name": "Nike Trang",
+      "manufactor": "Nike",
+      "price": 2450000
+    }
+  },
+   {
+    "model": "app.Shoe",
+    "pk": 3,
+    "fields": {
+      "name": "Pumba Gold Limited",
+      "manufactor": "Pumba",
+      "price": 32000000
+    }
+  },
+   {
+    "model": "app.Shoe",
+    "pk": 4,
+    "fields": {
+      "name": "Rasion Rose Pink",
+      "manufactor": "Rasion",
+      "price": 12000000
+    }
+  },
+  {
+    "model": "app.Shoe",
+    "pk": 5,
+    "fields": {
+      "name": "Black Toothless",
+      "manufactor": "Toothless",
+      "price": 1500000
+    }
+  },
+  {
+    "model": "app.Promotion",
+    "pk": 1,
+    "fields": {
+      "name": "2019BlackFriday",
+      "promote": "20",
+      "is_used": "1"
+    }
+  },
+  {
+    "model": "app.Promotion",
+    "pk": 2,
+    "fields": {
+      "name": "2020BlackFriday",
+      "promote": "10",
+      "is_used": "0"
+    }
+  },
+  {
+    "model": "app.Promotion",
+    "pk": 3,
+    "fields": {
+      "name": "XaHangThang10",
+      "promote": "10",
+      "is_used": "0"
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 1,
+    "fields": {
+      "size": 1,
+      "shoe": 1,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 2,
+    "fields": {
+      "size": 2,
+      "shoe": 1,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 3,
+    "fields": {
+      "size": 3,
+      "shoe": 1,
+      "amount": 10
+    }
+  },
+   {
+    "model": "app.Stock",
+    "pk": 4,
+    "fields": {
+      "size": 4,
+      "shoe": 1,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 5,
+    "fields": {
+      "size": 5,
+      "shoe": 1,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 6,
+    "fields": {
+      "size": 6,
+      "shoe": 1,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 7,
+    "fields": {
+      "size": 7,
+      "shoe": 1,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 8,
+    "fields": {
+      "size": 1,
+      "shoe": 2,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 9,
+    "fields": {
+      "size": 2,
+      "shoe": 2,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 10,
+    "fields": {
+      "size": 3,
+      "shoe": 2,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 11,
+    "fields": {
+      "size": 4,
+      "shoe": 2,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 12,
+    "fields": {
+      "size": 5,
+      "shoe": 2,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 13,
+    "fields": {
+      "size": 6,
+      "shoe": 2,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 14,
+    "fields": {
+      "size": 7,
+      "shoe": 2,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 15,
+    "fields": {
+      "size": 8,
+      "shoe": 2,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 16,
+    "fields": {
+      "size": 9,
+      "shoe": 2,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 17,
+    "fields": {
+      "size": 10,
+      "shoe": 2,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 18,
+    "fields": {
+      "size": 4,
+      "shoe": 3,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 19,
+    "fields": {
+      "size": 5,
+      "shoe": 3,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 20,
+    "fields": {
+      "size": 10,
+      "shoe": 3,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 21,
+    "fields": {
+      "size": 4,
+      "shoe": 4,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 22,
+    "fields": {
+      "size": 5,
+      "shoe": 4,
+      "amount": 10
+    }
+  },
+  {
+    "model": "app.Stock",
+    "pk": 23,
+    "fields": {
+      "size": 6,
+      "shoe": 4,
+      "amount": 10
+    }
+  }
+]
