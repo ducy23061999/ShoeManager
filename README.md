@@ -33,3 +33,9 @@ python manage.py runserver
 user: admin
 pass: 123456@
 ```
+- Dump User
+```buildoutcfg
+user: user
+pass: 123
+
+```
