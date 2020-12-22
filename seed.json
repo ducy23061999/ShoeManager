@@ -21,7 +21,7 @@
       "role": 1,
       "first_name": "Tran",
       "last_name": "Duc",
-      "password": "123",
+      "password": "pbkdf2_sha256$216000$cZOIa1jMlEwy$L1cbhTCtXsUv2OjzjcAi39d6jQLkNMUK4s1eL4FZMDk=",
       "address": "Phu my phu vang hue"
     }
   },
@@ -33,7 +33,7 @@
       "role": 1,
       "first_name": "Tran",
       "last_name": "Duc",
-      "password": "123",
+      "password": "pbkdf2_sha256$216000$cZOIa1jMlEwy$L1cbhTCtXsUv2OjzjcAi39d6jQLkNMUK4s1eL4FZMDk=",
       "address": "Phu my phu vang hue"
     }
   },

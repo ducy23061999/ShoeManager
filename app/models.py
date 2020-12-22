@@ -51,7 +51,7 @@ class CustomUserManager(BaseUserManager):
         user.last_name = last_name
         user.set_password(password)  # change password to hash
 
-        role = Role.objects.get(pk=2)
+        role = Role.objects.get(roleId=2)
         user.role = role
 
         user.is_admin = True
@@ -91,16 +91,19 @@ class User(AbstractBaseUser):
 
 
 # ------------- SIZE -----------------
+
 class Size(models.Model):
     size = models.IntegerField()
 
 # ------------- Shoe--------------------
+
 class Shoe(models.Model):
     name = models.CharField(max_length=200)
     manufactor = models.CharField(max_length=500)
     image = models.CharField(max_length=2000, default="")
     price = models.IntegerField()
 # ------------- Shoe--------------------
+
 class Stock(models.Model):
     size = models.ForeignKey(Size, on_delete=models.CASCADE)
     shoe = models.ForeignKey(Shoe, on_delete=models.CASCADE)
@@ -108,16 +111,19 @@ class Stock(models.Model):
     class Meta:
         unique_together = (("size", "shoe"))
 #--------------Promotion----------------------
+
 class Promotion(models.Model):
     name = models.CharField(max_length=200, default="")
     promote = models.FloatField()
     is_used = models.BooleanField(default=False)
 #--------------Cart----------------------
+
 class Cart(models.Model):
     user_create = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField()
     promote = models.ForeignKey(Promotion, on_delete=models.CASCADE)
 # --------------CartDetail--------------------
+
 class CartDetail(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     shoe = models.ForeignKey(Shoe, on_delete=models.CASCADE)
