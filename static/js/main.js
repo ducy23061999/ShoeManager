@@ -255,31 +255,31 @@ $(document).ready(function(){
         noUiSlider.create(nonLinearSlider, {
             connect: true,
             behaviour: 'tap',
-            start: [ 500, 4000 ],
+            start: [ 1300, 20000 ],
             range: {
-                // Starting at 500, step the value by 500,
-                // until 4000 is reached. From there, step by 1000.
-                'min': [ 0 ],
-                '10%': [ 500, 500 ],
-                '50%': [ 4000, 1000 ],
-                'max': [ 10000 ]
-            }
+                'min': 500,
+                'max': 30000
+            },
         });
 
 
         var nodes = [
             document.getElementById('lower-value'), // 0
-            document.getElementById('upper-value')  // 1
+            document.getElementById('upper-value'),  //
+            document.getElementById('inLower'), // 0
+            document.getElementById('inUpper'), // 0
         ];
 
         // Display the slider value and how far the handle moved
         // from the left edge of the slider.
         nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
-            nodes[handle].innerHTML = values[handle];
+            let index = handle % 2;
+            nodes[index].innerHTML = values[index];
+            let nextId = index == 0 ? 2 : 3;
+            nodes[nextId].value = values[index];
         });
 
         }
-
     });
 
     

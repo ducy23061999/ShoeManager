@@ -19,6 +19,8 @@
     "fields": {
       "username": "user",
       "role": 1,
+      "first_name": "Tran",
+      "last_name": "Duc",
       "password": "123",
       "address": "Phu my phu vang hue"
     }
@@ -27,8 +29,10 @@
     "model": "app.User",
     "pk": 2,
     "fields": {
-      "username": "admin",
-      "role": 2,
+      "username": "ducy",
+      "role": 1,
+      "first_name": "Tran",
+      "last_name": "Duc",
       "password": "123",
       "address": "Phu my phu vang hue"
     }

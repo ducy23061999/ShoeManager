@@ -1,0 +1,18 @@
+
+<div class="col-lg-9">
+    <div class="row">
+        {% for shoe in deal_of_week %}
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+            <div class="single-related-product d-flex">
+                <a href="#"><img src="{{ shoe.image }}" alt="" style="height: 60px; width: 60px ;object-fit: cover;"></a>
+                <div class="desc">
+                    <a href="#" class="title">{{ shoe.name }}</a>
+                    <div class="price">
+                        <h6>{{shoe.price}} <strong>VND</strong></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
