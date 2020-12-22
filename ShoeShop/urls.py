@@ -19,6 +19,11 @@ from app.views import homes, admins
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', homes.current_datetime),
+    path('', homes.index),
+    path('category/', homes.category),
+    path('cart/', homes.cart),
+    path('login/', homes.login),
+    path('register/', homes.register),
+    path('product/', homes.detail),
     path('dashboard/', admins.current_datetime)
 ]

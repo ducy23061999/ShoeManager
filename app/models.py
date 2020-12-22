@@ -18,13 +18,13 @@ class Size(models.Model):
 class Shoe(models.Model):
     name = models.CharField(max_length=200)
     manufactor = models.CharField(max_length=500)
+    image = models.CharField(max_length=2000, default="")
     price = models.IntegerField()
 # ------------- Shoe--------------------
 class Stock(models.Model):
     size = models.ForeignKey(Size, on_delete=models.CASCADE)
     shoe = models.ForeignKey(Shoe, on_delete=models.CASCADE)
     amount = models.IntegerField(default=0)
-
     class Meta:
         unique_together = (("size", "shoe"))
 #--------------Promotion----------------------

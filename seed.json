@@ -109,6 +109,7 @@
     "fields": {
       "name": "Nike Den",
       "manufactor": "Nike",
+      "image": "../static/img/category/c1.jpg",
       "price": 2400000
     }
   },
@@ -118,6 +119,7 @@
     "fields": {
       "name": "Nike Trang",
       "manufactor": "Nike",
+      "image": "../static/img/category/c2.jpg",
       "price": 2450000
     }
   },
@@ -127,6 +129,7 @@
     "fields": {
       "name": "Pumba Gold Limited",
       "manufactor": "Pumba",
+      "image": "../static/img/category/c3.jpg",
       "price": 32000000
     }
   },
@@ -136,6 +139,7 @@
     "fields": {
       "name": "Rasion Rose Pink",
       "manufactor": "Rasion",
+      "image": "../static/img/category/c4.jpg",
       "price": 12000000
     }
   },
@@ -145,6 +149,7 @@
     "fields": {
       "name": "Black Toothless",
       "manufactor": "Toothless",
+      "image": "../static/img/category/c5.jpg",
       "price": 1500000
     }
   },
