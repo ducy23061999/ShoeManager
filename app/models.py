@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser
-
+from django.core import serializers
+from django.http import JsonResponse
+from django.forms.models import model_to_dict
 
 # Create your models here.
 # ------------- Role-------------------
@@ -88,6 +90,7 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return "{}".format(self.username)
+
 
 
 # ------------- SIZE -----------------

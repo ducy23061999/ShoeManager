@@ -42,7 +42,7 @@
 
                         </li>
                         {% endif %}
-
+                {% if user is None %}
                         {% if menu_active == 3 %}
                         <li class="nav-item active">
                             <a href="/login" class="nav-link dropdown-toggle">Login</a>
@@ -60,6 +60,27 @@
                         {% else %}
                          <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
                         {% endif %}
+                {% else %}
+
+                        {% if menu_active == 4 %}
+                        <li class="nav-item submenu dropdown active">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">{{user.username}}</a>
+                            <ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
+                            </ul>
+                        </li>
+                        {% else %}
+                         <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">{{user.username}}</a>
+                            <ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
+
+                            </ul>
+                        </li>
+                        {% endif %}
+                {% endif %}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
