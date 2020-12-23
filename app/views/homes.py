@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
-from app.models import Shoe, Size, Stock
+from app.models import Shoe, Size, Stock, User
 from app.utils import getShoeWithMax, serialize, parseOne, parseMany
-
+from django.contrib.auth import logout as AuthLogout
 
 import datetime
 
@@ -83,14 +83,54 @@ def login(request):
            session['user'] = serialize(user)
            return redirect('/cart/')
        else:
-           return redirect('/login/')
+           context['error'] = "Login Failed"
+           return render(request, 'app/login.html', context)
+
+def logout(request):
+    try:
+        AuthLogout(request)
+        del request.session['user']
+    except KeyError:
+        pass
+    return redirect('/')
+
+
 
 def register(request):
+    session = request.session
     context = {
-        "menu_active": 3
+        "menu_active": 4
     }
 
-    return render(request, 'app/register.html', context)
+    if request.method == 'GET':
+        if session.get('user', False):
+            return redirect('/')
+        else:
+            context = {
+                "menu_active": 4
+            }
+            return render(request, 'app/user_register.html', context)
+    else:
+        try:
+            username = request.POST.get('username', '')
+            password = request.POST.get('password', '')
+            repassword = request.POST.get('repassword', '')
+            firstname = request.POST.get('firstname', '')
+            lastname = request.POST.get('lastname', '')
+
+            if password == repassword:
+                if User.objects.filter(username=username).filter():
+                    context['error'] = "Username already taken"
+                    return render(request, 'app/user_register.html', context)
+                else:
+                    User.objects.create_user(username, password, firstname, lastname)
+
+                    return redirect("/login")
+            else:
+                context['error'] = "Password not match"
+                return render(request, 'app/user_register.html', context)
+        except User.DoesNotExist:
+            return redirect("/")
 
 def detail(request):
     context = {

@@ -23,6 +23,7 @@ urlpatterns = [
     path('category/', homes.category),
     path('cart/', homes.cart),
     path('login/', homes.login),
+    path('logout/', homes.logout),
     path('register/', homes.register),
     path('product/', homes.detail),
     path('dashboard/', admins.current_datetime)

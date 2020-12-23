@@ -1,9 +1,6 @@
 from django.db import models
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser
-from django.core import serializers
-from django.http import JsonResponse
-from django.forms.models import model_to_dict
 
 # Create your models here.
 # ------------- Role-------------------
@@ -97,7 +94,6 @@ class User(AbstractBaseUser):
 
 class Size(models.Model):
     size = models.IntegerField()
-
 # ------------- Shoe--------------------
 
 class Shoe(models.Model):
@@ -119,12 +115,14 @@ class Promotion(models.Model):
     name = models.CharField(max_length=200, default="")
     promote = models.FloatField()
     is_used = models.BooleanField(default=False)
+
 #--------------Cart----------------------
 
 class Cart(models.Model):
     user_create = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField()
     promote = models.ForeignKey(Promotion, on_delete=models.CASCADE)
+
 # --------------CartDetail--------------------
 
 class CartDetail(models.Model):
