@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app.views import homes, admins
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,8 +24,14 @@ urlpatterns = [
     path('category/', homes.category),
     path('cart/', homes.cart),
     path('login/', homes.login),
-    path('logout/', homes.logout),
+    path('logout/',homes.logout),
     path('register/', homes.register),
     path('product/', homes.detail),
-    path('dashboard/', admins.current_datetime)
+    #path('dashboard/', admins.current_datetime),
+
+    path('dashboard/', admins.dashboard),
+    path('dashboard/login/', admins.login),
+    path('dashboard/logout/', admins.logout),
+
+
 ]
