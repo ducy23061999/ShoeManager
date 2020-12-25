@@ -60,7 +60,7 @@
 					<ul class="main-categories">
 						{% for size in sizes %}
 						<li class="main-nav-list">
-							<a href="/category?size_id={{size.id}}">
+							<a href="/?size_id={{size.id}}">
 								<span
 								 class="lnr lnr-arrow-right"></span>{{size.size}}
 							</a>
@@ -90,7 +90,7 @@
 							</div>
 
 						</div>
-						<form method="get" action="/category" class="mt-3">
+						<form method="get" action="/" class="mt-3">
 							<input type="hidden" name="lower_price" id="inLower"/>
 							<input type="hidden" name="upper_price" id="inUpper"/>
 							<button type="submit" class="genric-btn primary-border circle">Submit</button>
@@ -135,7 +135,7 @@
 									</div>
 									<div class="prd-bottom">
 
-										<a href="" class="social-info">
+										<a href="/cart/add/{{ shoe.id }}/" class="social-info">
 											<span class="ti-bag"></span>
 											<p class="hover-text">add to bag</p>
 										</a>
@@ -147,7 +147,7 @@
 											<span class="lnr lnr-sync"></span>
 											<p class="hover-text">compare</p>
 										</a>
-										<a href="" class="social-info">
+										<a href="/product/{{ shoe.id }}" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
 										</a>

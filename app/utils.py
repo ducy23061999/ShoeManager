@@ -12,7 +12,10 @@ def getShoeWithMax(shoes):
     return maxItems
 
 def serialize(obj):
-    return serializers.serialize('json', [ obj, ])
+    return serializers.serialize('json', [ obj ])
+
+def serializeMany(obj):
+    return serializers.serialize('json', obj)
 def parseOne(obj):
     objcs = serializers.deserialize('json', obj)
     for obj in objcs:
@@ -21,6 +24,7 @@ def parseOne(obj):
 def parseMany(obj):
     def convert(x):
         return x.object
+
     rawObjects = serializers.deserialize('json', obj)
     listObject = map(convert, rawObjects)
-    return rawObjects
+    return list(listObject)

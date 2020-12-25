@@ -20,8 +20,12 @@ from app.views import homes, admins
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homes.category),
+    path('product/<int:product_id>/', homes.detail),
     path('category/', homes.category),
     path('cart/', homes.cart),
+    path('cart/add/<int:shoe_id>/', homes.category_add),
+    path('cart/update/', homes.card_update),
+    path('cart/checkout/', homes.checkout),
     path('login/', homes.login),
     path('logout/', homes.logout),
     path('register/', homes.register),
