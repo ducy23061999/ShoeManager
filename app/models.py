@@ -101,6 +101,8 @@ class Shoe(models.Model):
     manufactor = models.CharField(max_length=500)
     image = models.CharField(max_length=2000, default="")
     price = models.IntegerField()
+
+
 # ------------- Shoe--------------------
 
 class Stock(models.Model):
@@ -120,8 +122,9 @@ class Promotion(models.Model):
 
 class Cart(models.Model):
     user_create = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateField()
-    promote = models.ForeignKey(Promotion, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True, blank=True)
+    promote = models.ForeignKey(Promotion, on_delete=models.CASCADE, blank=True, null=True)
+    da_duyet = models.BooleanField(default=False)
 
 # --------------CartDetail--------------------
 
