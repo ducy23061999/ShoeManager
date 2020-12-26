@@ -34,6 +34,8 @@ urlpatterns = [
     #path('dashboard/', admins.current_datetime),
 
     path('dashboard/', admins.dashboard),
+    path('dashboard/donhang/',admins.duyet_don_hang),
+    path('dashboard/duyetdon/<int:don_id>/',admins.duyet_don),
     path('dashboard/login/', admins.login),
     path('dashboard/logout/', admins.logout),
 
