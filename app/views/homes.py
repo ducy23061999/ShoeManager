@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
-from app.models import Shoe, Size, Stock, User
-from app.utils import getShoeWithMax, serialize, parseOne, parseMany
+from app.models import Shoe, Size, Stock, User, Cart, CartDetail
+from app.utils import getShoeWithMax, serialize, parseOne, parseMany, serializeMany
 from django.contrib.auth import logout as AuthLogout
 
-import datetime
 
 def index(request):
     shoes = Shoe.objects.all()
@@ -15,7 +14,21 @@ def index(request):
         "deal_of_week": dealOfWeek
     }
 
+
     return render(request, 'app/index.html', context)
+
+def detail(request, product_id):
+    session = request.session
+    shoe = Shoe.objects.get(pk=product_id)
+
+    context = {
+        "menu_active": 0,
+        "shoe": shoe
+    }
+    if session.get('user', False):
+        user = session.get('user', None)
+        context['user'] = parseOne(user)
+    return render(request, 'app/single-product.html', context)
 
 def category(request):
     session = request.session
@@ -36,6 +49,7 @@ def category(request):
         shoes = Shoe.objects.all()
 
 
+
     context = {
         "menu_active": 0,
         "sizes": sizes,
@@ -49,6 +63,44 @@ def category(request):
 
     return render(request, 'app/category.html', context)
 
+def category_add(request, shoe_id):
+    session = request.session
+    targetShoe = Shoe.objects.get(pk=shoe_id)
+    rawShoes = session.get('cart', [])
+
+    shoes = []
+
+    if rawShoes:
+        shoes = parseMany(rawShoes)
+
+    shoes.append(targetShoe)
+    session['cart'] = serializeMany(shoes)
+    return redirect('/')
+
+def card_update(request):
+    if request.method == 'POST':
+        session = request.session
+        itemArray = request.POST.getlist('shop_id')
+        amountArray = request.POST.getlist('shop_number')
+
+        listSSShoes = []
+
+        if (len(itemArray) > 0):
+            del session['cart']
+
+            for i, shoeId in enumerate(itemArray):
+                shoe = Shoe.objects.get(pk=int(shoeId))
+                j = 1
+                while j <= int(amountArray[i]):
+                    listSSShoes.append(shoe)
+                    j = j + 1
+            session['cart'] = serializeMany(listSSShoes)
+
+        return redirect('/cart/')
+
+    else:
+        return redirect('/cart/')
+
 def cart(request):
     session = request.session
     context = {
@@ -58,7 +110,59 @@ def cart(request):
         user = session.get('user', None)
         context['user'] = parseOne(user)
 
-    return render(request, 'app/cart.html', context)
+        rawShoes = session.get('cart', [])
+        listCartShoe = []
+
+        if rawShoes:
+            listCartShoe = parseMany(rawShoes)
+        dict = {}
+
+        for shoe in listCartShoe:
+            if shoe in dict:
+                dict[shoe] = dict[shoe] + 1
+            else:
+                dict[shoe] = 1
+
+        total = 0
+        for key, value in dict.items():
+            total = total + key.price * value
+        context['shoe_detail'] = list(dict.keys())
+        context['shoe_order'] = dict
+        context['total'] = total
+
+
+        return render(request, 'app/cart.html', context)
+    else:
+        return redirect('/login/')
+
+def checkout(request):
+    session = request.session
+    if not session.get('user', False):
+        return redirect('/login/')
+
+    rawUser = session.get('user', None)
+    user = parseOne(rawUser)
+    cart = Cart.objects.create(user_create=user, da_duyet=False)
+
+    listShoe = []
+    rawShoes = session.get('cart', [])
+    if len(rawShoes):
+        listShoe = parseMany(rawShoes)
+    else:
+        return redirect('/cart/')
+    dictDistince = {}
+    for shoe in listShoe:
+        if shoe in dictDistince:
+            dictDistince[shoe] = dictDistince[shoe] + 1
+        else:
+            dictDistince[shoe] = 1
+
+    if len(dictDistince.keys()) > 0:
+        for shoe in dictDistince.keys():
+            CartDetail.objects.create(cart=cart, shoe=shoe, amount=dictDistince[shoe])
+
+    del session['cart']
+    return redirect('/cart/')
 
 def login(request):
    session = request.session
@@ -123,7 +227,7 @@ def register(request):
                     context['error'] = "Username already taken"
                     return render(request, 'app/user_register.html', context)
                 else:
-                    User.objects.create_user(username, password, firstname, lastname)
+                    User.objects.create_user(username, firstname, lastname, password)
 
                     return redirect("/login")
             else:
@@ -132,9 +236,16 @@ def register(request):
         except User.DoesNotExist:
             return redirect("/")
 
-def detail(request):
+def history(request):
+    session = request.session
     context = {
-        "menu_active": 1
+        "menu_active": 2
     }
-    return render(request, 'app/single-product.html', context)
+    if session.get('user', False):
+        user = session.get('user', None)
+        context['user'] = parseOne(user)
+
+        return render(request, 'app/history.html', context)
+    else:
+        return redirect('/login/')
 

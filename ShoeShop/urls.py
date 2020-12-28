@@ -21,15 +21,20 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homes.category),
+    path('product/<int:product_id>/', homes.detail),
     path('category/', homes.category),
     path('cart/', homes.cart),
+    path('cart/add/<int:shoe_id>/', homes.category_add),
+    path('cart/update/', homes.card_update),
+    path('cart/checkout/', homes.checkout),
     path('login/', homes.login),
     path('logout/',homes.logout),
     path('register/', homes.register),
+    path('history/', homes.history),
     path('product/', homes.detail),
-    #path('dashboard/', admins.current_datetime),
-
     path('dashboard/', admins.dashboard),
+    path('dashboard/donhang/', admins.duyet_don_hang),
+    path('dashboard/duyetdon/<int:don_id>/',admins.duyet_don),
     path('dashboard/login/', admins.login),
     path('dashboard/logout/', admins.logout),
 
