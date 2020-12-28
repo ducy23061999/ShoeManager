@@ -181,7 +181,7 @@ def history(request):
             cartDetail = CartDetail.objects.filter(cart=cart)
             total = 0
             for item in cartDetail:
-                total = item.amount + item.shoe.price
+                total = item.amount * item.shoe.price
             cartTotal[cart] = total
 
         if len(list(cartTotal.keys())) > 0:
