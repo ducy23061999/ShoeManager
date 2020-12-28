@@ -55,40 +55,40 @@
             <div class="cart_inner">
                 <div class="table-responsive">
                     <form action="/cart/update/" method="POST">
-                        {% csrf_token %}
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Quantity</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for cart in carts %}
                                 <tr>
                                     <td>
-                                        <div class="media">
-                                            <div class="d-flex">
-                                                <img src="bbb" alt="" style="height: 100px; width: 100px; object-fit: cover;">
-                                            </div>
-                                            <div class="media-body">
-                                                <a href="/product/{{ shoe.id }}" class="text-dark">AAA</a>
-                                            </div>
-                                        </div>
+                                        <h5><strong>{{ cart.id }}</strong></h5>
                                     </td>
                                     <td>
-                                        <h5>20000</h5>
+                                        <h5>{{ cart.user_create.username }}</h5>
                                     </td>
                                     <td>
-                                        <div class="product_count">
-                                        </div>
+                                        {% if cart.da_duyet %}
+                                            <span class="badge badge-success" style="padding: 10px; font-size: 0.8rem">Checked</span>
+                                        {% else %}
+                                            <span class="badge badge-light" style="padding: 10px; font-size: 0.8rem">Pending</span>
+                                        {% endif %}
                                     </td>
                                     <td>
-                                        <h5>CCC</h5>
-
+                                        {% for key, value in cart_total %}
+                                            {% if key == cart %}
+                                                <h5>{{value}}</h5>
+                                            {% endif %}
+                                        {% endfor %}
                                     </td>
                                 </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </form>

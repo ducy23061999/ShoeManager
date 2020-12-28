@@ -164,6 +164,31 @@ def checkout(request):
     del session['cart']
     return redirect('/cart/')
 
+def history(request):
+    session = request.session
+    context = {
+        "menu_active": 2
+    }
+    if session.get('user', False):
+        rawUser = session.get('user', None)
+        context['user'] = parseOne(rawUser)
+        user = parseOne(rawUser)
+        carts = Cart.objects.filter(user_create=user)
+        context['carts'] = carts
+
+        cartTotal = {}
+        for cart in carts:
+            cartDetail = CartDetail.objects.filter(cart=cart)
+            total = 0
+            for item in cartDetail:
+                total = item.amount + item.shoe.price
+            cartTotal[cart] = total
+
+        if len(list(cartTotal.keys())) > 0:
+            context['cart_total'] = cartTotal.items()
+        return render(request, 'app/history.html', context)
+    else:
+        return redirect('/login/')
 def login(request):
    session = request.session
    if request.method == 'GET':
@@ -236,16 +261,4 @@ def register(request):
         except User.DoesNotExist:
             return redirect("/")
 
-def history(request):
-    session = request.session
-    context = {
-        "menu_active": 2
-    }
-    if session.get('user', False):
-        user = session.get('user', None)
-        context['user'] = parseOne(user)
-
-        return render(request, 'app/history.html', context)
-    else:
-        return redirect('/login/')
 
